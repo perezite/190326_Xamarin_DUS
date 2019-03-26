@@ -2,13 +2,176 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Layoutcontainer"
-             x:Class="Layoutcontainer.MainPage">
+             x:Class="Layoutcontainer.MainPage"
+             BackgroundColor="Tan">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:Double x:Key="defaultSize">30</x:Double>
+            <!-- Expliziter Style-->
+            <Style TargetType="Button" x:Key="NewStyle">
+                <Setter Property="BackgroundColor" Value="GhostWhite"/>
+                <Setter Property="TextColor" Value="DarkSeaGreen"/>
+                <Setter Property="FontSize" Value="20"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>
+    <!-- Horizontal/VerticalOptions: 
+    Center -> Container selbst
+    ...andExpand -> innerhalb des Containers -->
+    <!--<StackLayout BackgroundColor="DarkSlateBlue"
+                 Spacing="0">
+        <Button Text="Button 1"/>
+        <Button Text="Button 2"/>
+        <Button Text="Button 3"/>
+        <Button Text="Button 4"/>
+        <BoxView BackgroundColor="NavajoWhite"
+                 VerticalOptions="FillAndExpand"/>
 
+        <StackLayout Orientation="Horizontal">
+            <Button Text="Ok"/>
+            <Button Text="Abbrechen" HorizontalOptions="FillAndExpand"/>
+        </StackLayout>
+    </StackLayout>-->
+
+    <!--<Grid BackgroundColor="MediumSeaGreen"
+          RowSpacing="20"
+          ColumnSpacing="20">
+
+        <BoxView Grid.Row="0" Grid.ColumnSpan="2" BackgroundColor="LightSalmon"/>
+        <BoxView Grid.Row="3" BackgroundColor="DarkCyan"/>
+        <BoxView Grid.Row="1"
+                 Grid.RowSpan="3"
+                 Grid.Column="1" BackgroundColor="MediumPurple"/>
+
+    </Grid>-->
+
+    <!-- Margin: Aussenabstand
+         Padding: Innenabstand
+         "links,oben,rechts,unten"
+         "linksOben,RechtsUnten"
+         "alleSeiten"
+        -->
+    <!--<Grid BackgroundColor="LightPink" Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        
+        
+        <Entry Grid.Row="0" Grid.Column="0" Placeholder="Suchtext:"/>
+        <Button Grid.Row="0" Grid.Column="1" Text="Suchen !"/>
+        <ListView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="YellowGreen"/>
+    </Grid>-->
+
+    <!--<Grid BackgroundColor="LightSlateGray" x:Name="gridRoot"
+          Padding="40" RowSpacing="10" ColumnSpacing="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+       
+
+        <Grid.Resources>
+            <ResourceDictionary>
+                <x:Double x:Key="defaultSize"> 55 </x:Double>
+                
+                -->
+    <!-- Expliziter Style-->
+    <!--
+                <Style TargetType="Button" x:Key="specialButtonStyle">
+                    <Setter Property="BackgroundColor" Value="Gray"/>
+                    <Setter Property="TextColor" Value="BlueViolet"/>
+                    <Setter Property="FontSize" Value="40"/>
+                </Style>
+
+                -->
+    <!--  Impliziter Style -->
+    <!--
+                <Style TargetType="Button" >
+                    <Setter Property="BackgroundColor" Value="PeachPuff"/>
+                    <Setter Property="TextColor" Value="Crimson"/>
+                    <Setter Property="FontSize" Value="40"/>
+                </Style>
+
+            </ResourceDictionary>
+        </Grid.Resources>
+
+        <Label Grid.Row="0" Grid.Column="1" Text="1234" FontSize="40"
+               VerticalTextAlignment="Center"/>
+
+        <Button Grid.Row="1" Grid.Column="0" Text="1" TextColor="Black" BackgroundColor="Orange" BorderRadius="30" FontSize="{StaticResource defaultSize}"/>
+        <Button Grid.Row="1" Grid.Column="1" Text="2" TextColor="Black" BackgroundColor="Orange" BorderRadius="30" FontSize="{StaticResource defaultSize}"/>
+        <Button Grid.Row="1" Grid.Column="2" Text="3" TextColor="Black" BackgroundColor="Orange" BorderRadius="30" FontSize="{StaticResource defaultSize}">
+            <Button.Resources>
+                <ResourceDictionary>
+                    <x:Double x:Key="defaultSize">10</x:Double>
+                </ResourceDictionary>
+            </Button.Resources>
+        </Button>
+        
+        <Button Grid.Row="2" Grid.Column="0" Text="4" TextColor="Black" BackgroundColor="White" BorderRadius="30" FontSize="20"/>
+        <Button Grid.Row="2" Grid.Column="1" Text="5" TextColor="Black" BackgroundColor="White" BorderRadius="30" FontSize="20"/>
+        <Button Grid.Row="2" Grid.Column="2" Text="6" TextColor="Black" BackgroundColor="White" BorderRadius="30" FontSize="20"/>
+
+        <Button Grid.Row="3" Grid.Column="0" Text="7" Style="{StaticResource specialButtonStyle}"/>
+        <Button Grid.Row="3" Grid.Column="1" Text="8" Style="{StaticResource specialButtonStyle}"/>
+        <Button Grid.Row="3" Grid.Column="2" Text="9" Style="{DynamicResource specialButtonStyle}"/>
+
+        <Button Grid.Row="4" Grid.Column="1" Text="0" Clicked="Button_Clicked"/>
+        <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Text="Dial" TextColor="Black" BorderRadius="30" FontSize="20">
+
+        </Button>
+    </Grid>-->
+    <!--<Button.BackgroundColor>
+        <OnPlatform UWP="Blue" Android="Red" iOS="Green"/>
+        <OnIdiom Desktop="Red" Phone="Blue" Tablet="Green"/>
+    </Button.BackgroundColor>-->
+
+    <!-- AbsoluteLayout.LayoutBounds="X,Y,Width,Height" -->
+    <!-- AbsoluteLayout.LayoutFlags="None"   => Proportional zwischen 0 und 1-->
+
+    <!--<AbsoluteLayout BackgroundColor="Linen">
+        <BoxView BackgroundColor="PaleGreen"
+                 AbsoluteLayout.LayoutBounds="0,0,1,0.3"
+                 AbsoluteLayout.LayoutFlags="SizeProportional"/>
+        
+        <BoxView BackgroundColor="DarkMagenta"
+                 AbsoluteLayout.LayoutBounds="0,1,1,0.7"
+                 AbsoluteLayout.LayoutFlags="All"/>
+        
+        <BoxView BackgroundColor="DarkSalmon"
+                 AbsoluteLayout.LayoutBounds="50,50,100,100"/>
+
+        <BoxView BackgroundColor="Blue"
+                 AbsoluteLayout.LayoutBounds="80,80,100,100"/>
+    </AbsoluteLayout>-->
+
+    <RelativeLayout BackgroundColor="Navy">
+        <BoxView x:Name="boxViewHeader" BackgroundColor="BlueViolet"
+                 RelativeLayout.HeightConstraint="{ConstraintExpression
+                 Type=RelativeToParent,
+                 Property=Height,
+                 Factor=0.333}"
+                 RelativeLayout.WidthConstraint="{ConstraintExpression
+                 Type=RelativeToParent,
+                 Property=Width}"/>
+
+        <BoxView BackgroundColor="HotPink" HeightRequest="100" WidthRequest="100"
+                 RelativeLayout.YConstraint="{ConstraintExpression
+                 Type=RelativeToView,
+                 ElementName=boxViewHeader,
+                 Property=Height,
+                 Factor=1,Constant=-50}"
+                 RelativeLayout.XConstraint="{ConstraintExpression
+                 Type=RelativeToView,
+                 ElementName=boxViewHeader,
+                 Property=Width,
+                 Factor=0.5,Constant=-50}"/>
+
+    </RelativeLayout>
+    
 </ContentPage>
