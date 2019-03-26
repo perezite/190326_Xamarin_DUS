@@ -7,8 +7,32 @@
     <StackLayout>
         <Label  Text="Welcome to Xamarin.Forms! --- by Michi" 
                 x:Name="labelEingabe"/>
-
         <Button x:Name="buttonKlickMich" Text="Klick mich !" Clicked="ButtonKlickMich_Clicked"/>
+        <Entry Placeholder="Username"/>
+        <Entry Placeholder="Passwort" IsPassword="True"/>
+        <Editor HeightRequest="200" Placeholder="Notizen..."/>
+
+        <Switch IsToggled="False"/>
+        <Slider Minimum="0" Maximum="100"/>
+        <ProgressBar Progress="0.5"/>
+        <Stepper Minimum="0" Maximum="10" Increment="2"/>
+
+        <DatePicker/>
+        <TimePicker/>
+
+        <!-- ComboBox -->
+        <Picker>
+            <Picker.Items>
+                <x:String>Apfel</x:String>
+                <x:String>Birne</x:String>
+                <x:String>Banane</x:String>
+                <x:String>Orange</x:String>
+            </Picker.Items>
+        </Picker>
+
+        <BoxView BackgroundColor="MediumAquamarine"/>
+        <ActivityIndicator IsRunning="True"/>
+
     </StackLayout>
 
 </ContentPage>
