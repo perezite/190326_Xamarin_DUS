@@ -5,10 +5,10 @@
              x:Class="HalloXForms.MainPage">
 
     <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+        <Label  Text="Welcome to Xamarin.Forms! --- by Michi" 
+                x:Name="labelEingabe"/>
+
+        <Button x:Name="buttonKlickMich" Text="Klick mich !" Clicked="ButtonKlickMich_Clicked"/>
     </StackLayout>
 
 </ContentPage>
