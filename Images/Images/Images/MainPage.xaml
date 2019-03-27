@@ -4,27 +4,49 @@
              xmlns:local="clr-namespace:Images"
              x:Class="Images.MainPage">
 
-    <StackLayout>
-        
-        <!-- Variante 1: URL -->
-        <!-- Image x:Name="imageBild" Source="https://baconmockup.com/500/500/"/-->
-        
-        <!-- Variante 2: Bild im nativen Projekt hinterlegen -->
-        <!-- Image x:Name="imageBild" Source="Icons/hamster.jpg" /-->
+    <!-- Variante 1: URL -->
+    <!-- Image x:Name="imageBild" Source="https://baconmockup.com/500/500/"/-->
 
-        <!-- Variante 3: Bild im geteilten Projekt hinterlegen-->
-        <!-- Achtung: Bild muss eine "EmbeddedResource" (katze.png -> Properties -> BuildAction)-->
-        <!-- Image x:Name="imageBild" -->
-        
-        <!--<Image x:Name="imageBild" Source="{local:EmbeddedImage ID=Images.Icons.Katze.png}"/>-->
+    <!-- Variante 2: Bild im nativen Projekt hinterlegen -->
+    <!-- Image x:Name="imageBild" Source="Icons/hamster.jpg" /-->
 
-        <!--<BoxView HeightRequest="100">
+    <!-- Variante 3: Bild im geteilten Projekt hinterlegen-->
+    <!-- Achtung: Bild muss eine "EmbeddedResource" (katze.png -> Properties -> BuildAction)-->
+    <!-- Image x:Name="imageBild" -->
+
+    <!--<Image x:Name="imageBild" Source="{local:EmbeddedImage ID=Images.Icons.Katze.png}"/>-->
+
+    <!--<BoxView HeightRequest="100">
             <BoxView.BackgroundColor>
-                --><!-- OnPlatform UWP="Blue" Android="Red" Default="Green"/ --><!--
+                -->
+    <!-- OnPlatform UWP="Blue" Android="Red" Default="Green"/ -->
+    <!--
                 <OnIdiom Desktop="Yellow" Phone="Azure" Default="LawnGreen"/>
             </BoxView.BackgroundColor>
         </BoxView>-->
-        
-    </StackLayout>
+
+    <TableView>
+        <TableRoot>
+            <TableSection Title="Settings">
+                <TextCell Text="Hallo Textzelle" Detail="Unterüberschrift"/>
+                <!-- ImageSource="uri..."-->
+                <ImageCell Text="Hallo Bildzelle" Detail="Unterüberschrift"/>
+                <EntryCell Label="Vorname:" Placeholder="Max"/>
+                <EntryCell Label="Nachname:" Placeholder="Mustermann"/>
+                <SwitchCell Text="Notifications" On="True"/>
+            </TableSection>
+
+            <TableSection Title="Advanced Setings">
+                <!-- Eigene Zellen bauen: -->
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Klick den Button:"/>
+                        <Button Text="Klick mich" HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
+                </ViewCell>
+            </TableSection>
+
+        </TableRoot>
+    </TableView>
 
 </ContentPage>
