@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XForms4"
+             x:Class="XForms4.DemoShell"
+       RouteScheme="app"
+       RouteHost="demo.com"
+       Route="shelldemo">
+
+    <ShellItem Title="MainPageItem">
+
+        <ShellSection Title="CollectionView Page">
+            <ShellContent>
+                <ContentPage>
+                    <StackLayout>
+                        <Button Text="Get Personen" Clicked="Button_Clicked"/>
+                        <CollectionView x:Name="collectionViewDemo" SelectionMode="Single">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical" Span="2"/>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame BorderColor="Lavender" CornerRadius="10" HasShadow="True">
+                                        <StackLayout Spacing="5">
+                                            <Label Text="{Binding Vorname}" FontSize="15"/>
+                                            <Label Text="{Binding Kontostand}" FontSize="10"/>
+                                        </StackLayout>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                </ContentPage>
+            </ShellContent>
+        </ShellSection>
+
+        <ShellSection Title="CarouselView Page">
+            <ShellContent>
+                <ContentPage>
+                    <StackLayout>
+                        <Button Text="Get Personen" x:Name="buttonGetPersonenCarouselView" Clicked="ButtonGetPersonenCarouselView_Clicked"/>
+                        <CarouselView x:Name="carouselViewDemo" >
+                            <CarouselView.ItemsLayout>
+                                <GridItemsLayout Orientation="Horizontal" Span="2"  SnapPointsAlignment="Center" SnapPointsType="Mandatory"/>
+                            </CarouselView.ItemsLayout>
+                            <CarouselView.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame BorderColor="Lavender" CornerRadius="10" HasShadow="True">
+                                        <StackLayout Spacing="5">
+                                            <Label Text="{Binding Vorname}" FontSize="15"/>
+                                            <Label Text="{Binding Kontostand}" FontSize="10"/>
+                                        </StackLayout>
+                                    </Frame>
+                                </DataTemplate>
+                            </CarouselView.ItemTemplate>
+                        </CarouselView>
+                        <Slider x:Name="sliderWert" Minimum="0" Maximum="10" Value="0" ValueChanged="SliderWert_ValueChanged"/>
+                    </StackLayout>
+                </ContentPage>
+            </ShellContent>
+        </ShellSection>
+
+        <ShellSection Title="FarbPages">
+            <ShellContent Title="Rot" Route="rot">
+                <ContentPage Title="RotPage">
+                    <BoxView BackgroundColor="Red"/>
+                </ContentPage>
+            </ShellContent>
+            <ShellContent Title="Grün" Route="grün">
+                <ContentPage Title="GrünPage">
+                    <BoxView BackgroundColor="Green"/>
+                </ContentPage>
+            </ShellContent>
+            <ShellContent Title="Blau" Route="blau">
+                <ContentPage Title="BlauPage">
+                    <BoxView BackgroundColor="Blue"/>
+                </ContentPage>
+            </ShellContent>
+        </ShellSection>
+
+    </ShellItem>
+
+    <ShellItem Title="NavigationsItem">
+        <ShellSection Title="Navigation in der Page">
+            <ShellContent Route="app://demo.com/navigation">
+                <ContentPage>
+                    <StackLayout VerticalOptions="Center">
+                        <Button Text="Navigiere zu Rot" x:Name="buttonRot" Clicked="ButtonRot_Clicked"/>
+                    </StackLayout>
+                </ContentPage>
+            </ShellContent>
+        </ShellSection>
+    </ShellItem>
+</Shell>
