@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:NavigationXForms"
+             x:Class="NavigationXForms.TabbedPage_Demo">
+    
+  <!--Pages can be added as references or inline-->
+    <ContentPage Title="😜🤞🙌👀">
+        <BoxView BackgroundColor="Indigo"/>
+    </ContentPage>
+    <ContentPage Title="Tab 2" >
+        <BoxView BackgroundColor="DarkOliveGreen"/>
+    </ContentPage>
+    <ContentPage Title="Tab 3" >
+        <BoxView BackgroundColor="BlueViolet"/>
+    </ContentPage>
+
+    <NavigationPage Title="NavigationPage im Tab">
+        <x:Arguments>
+            <local:MainPage/>
+        </x:Arguments>
+    </NavigationPage>
+
+</TabbedPage>

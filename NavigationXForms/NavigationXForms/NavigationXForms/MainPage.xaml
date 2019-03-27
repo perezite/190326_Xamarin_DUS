@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:NavigationXForms"
+             x:Class="NavigationXForms.MainPage"
+             Title="123">
+    <NavigationPage.TitleView>
+        <StackLayout HorizontalOptions="End" Orientation="Horizontal">
+            <Button Text="+"/>
+            <Button Text="Info"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    <StackLayout VerticalOptions="Center">
+        <BoxView BackgroundColor="LightSlateGray"/>
+        <Button Text="Zur Seite 2 - NavigationPage" x:Name="buttonNavigationPage" Clicked="ButtonNavigationPage_Clicked"/>
+        <Button Text="Zur Seite 2 - Modal" x:Name="buttonModal" Clicked="ButtonModal_Clicked"/>
+    </StackLayout>
+
+</ContentPage>
