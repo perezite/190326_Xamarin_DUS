@@ -33,7 +33,7 @@ namespace Shake4Quake.ViewModels
 
         private void Text2Speech(MulticastService arg1, MulticastMessage msg)
         {
-            if (!Selbsttest)
+            if (!Selbsttest && DeviceInfo.Name == msg.Sender)
                 return;
 
             TextToSpeech.SpeakAsync(msg.Data);
@@ -41,7 +41,7 @@ namespace Shake4Quake.ViewModels
 
         private void Light(MulticastService arg1, MulticastMessage msg)
         {
-            if (!Selbsttest)
+            if (!Selbsttest && DeviceInfo.Name == msg.Sender)
                 return;
 
             if (msg.Data == "On")
@@ -51,7 +51,7 @@ namespace Shake4Quake.ViewModels
         }
         private void Vibrate(MulticastService arg1, MulticastMessage msg)
         {
-            if (!Selbsttest)
+            if (!Selbsttest && DeviceInfo.Name == msg.Sender)
                 return;
 
             Vibration.Vibrate();
