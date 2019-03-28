@@ -9,11 +9,13 @@
     </MasterDetailPage.BindingContext>
     
     <MasterDetailPage.Master>
-        <ContentPage Title="Master">
-            <ListView SeparatorVisibility="None"
+        <ContentPage Title="Master" Appearing="MasterPage_Appearing">
+            <ListView x:Name="listViewMasterMenu"
+                      SeparatorVisibility="None"
                       SelectionMode="None"
                       HasUnevenRows="true"
-                      ItemsSource="{Binding AvailablePages}">
+                      ItemsSource="{Binding AvailablePages}"
+                      ItemTapped="listViewMasterMenu_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                               <ViewCell>
@@ -31,6 +33,6 @@
     </MasterDetailPage.Master>
 
     <MasterDetailPage.Detail>
-        <views:ShakePage Title="NetworkShaker 4 fun ❤"/>
+        <ContentPage Title="Platzhalter"/>
     </MasterDetailPage.Detail>
 </MasterDetailPage>

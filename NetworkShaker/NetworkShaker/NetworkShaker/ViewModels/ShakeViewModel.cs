@@ -29,7 +29,7 @@ namespace NetworkShaker.ViewModels
         }
 
         public List<IShakeItem> ShakeItems { get; set; }
-        public int TotalShakeItems => ShakeItems.Count();
+        public int TotalShakeItems => ShakeItems.Count() -1;
 
         private int selectedShakeItemIndex;
         public int SelectedShakeItemIndex

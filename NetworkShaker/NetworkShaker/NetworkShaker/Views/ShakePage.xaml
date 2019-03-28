@@ -46,8 +46,8 @@
                 </DataTemplate>
             </CarouselView.ItemTemplate>
         </CarouselView>
-        <Slider Minimum="0"
-                Maximum="{Binding TotalShakeItems,Mode=OneTime}"
+        <Slider Maximum="{Binding TotalShakeItems,Mode=OneTime}"
+                Minimum="0"
                 Value="{Binding SelectedShakeItemIndex, Mode=OneWayToSource}"
                 ValueChanged="Slider_ValueChanged"/> 
     </StackLayout>
