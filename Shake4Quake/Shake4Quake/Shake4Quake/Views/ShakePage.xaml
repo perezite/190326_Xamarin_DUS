@@ -10,6 +10,7 @@
 
     <StackLayout Padding="20" Spacing="20">
         <Label Text="Select your Action:" FontSize="30" FontAttributes="Bold"/>
+        <Entry Text="{Binding Data}" Placeholder="Additional Action-Data"/>
         <CollectionView ItemsSource="{Binding ShakeActions}"
                         SelectionMode="Single"
                         SelectedItem="{Binding SelectedShakeAction, Mode=OneWayToSource}" >
@@ -18,14 +19,12 @@
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-
                     <Frame BorderColor="MediumAquamarine" CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
                             <Label Text="{Binding Name}" FontSize="40"/>
                             <iconize:IconImage Icon="{Binding Icon}" IconSize="30" />
                         </StackLayout>
                     </Frame>
-
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

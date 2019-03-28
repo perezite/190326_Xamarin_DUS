@@ -32,7 +32,8 @@ namespace Shake4Quake.ViewModels
 
         private void Text2Speech(MulticastService arg1, MulticastMessage arg2)
         {
-            TextToSpeech.SpeakAsync(arg2.Data);
+            if(!string.IsNullOrWhiteSpace(Data))
+                TextToSpeech.SpeakAsync(arg2.Data);
         }
 
         private void Light(MulticastService arg1, MulticastMessage arg2)
@@ -44,17 +45,11 @@ namespace Shake4Quake.ViewModels
         }
 
         private void ShakeDetected(object sender, EventArgs e)
-        {
-            string data = null;
-            if (SelectedShakeAction.Name == "Text2Speech")
-                data = "Hallo Welt";
-            else if (SelectedShakeAction.Name == "Light")
-                data = "On";
-
-            //else 
-            SelectedShakeAction?.InvokeAction(data);
+        { 
+            SelectedShakeAction?.InvokeAction(Data);
         }
 
+        public string Data { get; set; }
         public IShakeAction SelectedShakeAction { get; set; }
         public List<IShakeAction> ShakeActions { get; set; }
 

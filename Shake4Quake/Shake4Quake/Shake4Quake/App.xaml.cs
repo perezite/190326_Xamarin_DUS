@@ -18,7 +18,7 @@ namespace Shake4Quake
         public App()
         {
             InitializeComponent();
-            MainPage = new ShakePage();
+            MainPage = new RootPage();
             Plugin.Iconize.Iconize.With(new Plugin.Iconize.Fonts.MaterialModule());
 
             service = new MulticastService();
