@@ -3,6 +3,7 @@ using NetworkShaker.Views;
 using Plugin.Iconize;
 using System;
 using System.Linq;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -25,12 +26,14 @@ namespace NetworkShaker
 
         protected override void OnSleep()
         {
-            // Handle when your app sleeps
+            if (Accelerometer.IsMonitoring)
+                Accelerometer.Stop();
         }
 
         protected override void OnResume()
         {
-            // Handle when your app resumes
+            if (! Accelerometer.IsMonitoring)
+                Accelerometer.Start(SensorSpeed.UI);
         }
     }
 }
