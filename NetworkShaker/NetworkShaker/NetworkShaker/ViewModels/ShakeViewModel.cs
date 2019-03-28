@@ -22,7 +22,10 @@ namespace NetworkShaker.ViewModels
                            .ToList();
 
             Accelerometer.ShakeDetected += ShakeDetected;
-            Accelerometer.Start(SensorSpeed.UI);
+            if (Accelerometer.IsMonitoring)
+                Accelerometer.Stop();
+            else
+                Accelerometer.Start(SensorSpeed.UI);
         }
 
         public List<IShakeItem> ShakeItems { get; set; }

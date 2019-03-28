@@ -24,12 +24,5 @@ namespace NetworkShaker.Models
             if (!Active) return;
             Vibration.Vibrate();
         }
-
-        public override void TriggerAction()
-        {
-            MulticastMessage msg = new MulticastMessage(ShakeType.Vibrate, AdditionalDataNeeded ? AdditionalData : null);
-            if (Active) MessagingCenter.Send<object, MulticastMessage>(this, Title, msg);  // self
-            MessagingCenter.Send<object, MulticastMessage>(this, "SendMessage", msg);   // all
-        }
     }
 }

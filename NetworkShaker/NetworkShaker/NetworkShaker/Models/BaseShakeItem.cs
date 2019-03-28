@@ -35,6 +35,12 @@ namespace NetworkShaker.Models
             }
         }
         public abstract void InvokeAction(object sender, MulticastMessage msg);
-        public abstract void TriggerAction();
+        public virtual void TriggerAction()
+        {
+            MulticastMessage msg = new MulticastMessage(ShakeType, AdditionalDataNeeded ? AdditionalData : null);
+            if (Active)
+                MessagingCenter.Send<object, MulticastMessage>(this, ShakeType.ToString(), msg);  // self
+            MessagingCenter.Send<object, MulticastMessage>(this, "SendMessage", msg);   // all
+        }
     }
 }

@@ -16,11 +16,11 @@ namespace NetworkShaker.Views
 		public ShakePage ()
 		{
 			InitializeComponent ();
-		}
+        }
 
         private void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
         {
-            carouselViewShakeItems.ScrollTo(e.NewValue);
+            carouselViewShakeItems.ScrollTo(Convert.ToInt32(e.NewValue),position:ScrollToPosition.Center);
         }
     }
 }

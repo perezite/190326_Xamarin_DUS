@@ -1,23 +1,28 @@
 ﻿using NetworkShaker.Models.Interfaces;
 using System;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace NetworkShaker.Models
 {
-    class TextToSpeechShakeItem //: IShakeItem
+    class TextToSpeechShakeItem : BaseShakeItem
     {
-        public string Title => "Text to Speech";
-        public string Description => "Shake your phone to let every phone say your Text !";
-        public string IconID => "md-record-voice-over";
-        public string AdditionalData { get; set; }
-        public bool AdditionalDataNeeded => true;
-        public bool Active { get; set; }
-
-
-
-        public async Task InvokeAction()
+        public TextToSpeechShakeItem() : base(ShakeType.Text2Speech)
         {
-            throw new NotImplementedException();
+            Active = false;
+        }
+
+        public override string Title => "Text to Speech";
+        public override string Description => "Shake your phone to let every phone say your Text !";
+        public override string IconID => "md-record-voice-over";
+        public override string AdditionalData { get; set; }
+        public override bool AdditionalDataNeeded => true;
+
+        public override void InvokeAction(object sender, MulticastMessage msg)
+        {
+            if (!Active || string.IsNullOrWhiteSpace(msg.Data)) return;
+
+            TextToSpeech.SpeakAsync(msg.Data);
         }
     }
 }

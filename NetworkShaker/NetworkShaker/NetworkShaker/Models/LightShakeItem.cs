@@ -1,23 +1,30 @@
 ﻿using NetworkShaker.Models.Interfaces;
 using System;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace NetworkShaker.Models
 {
-    class LightShakeItem //: IShakeItem
+    class LightShakeItem : BaseShakeItem
     {
-        public string Title => "Flashlight";
-        public string Description => "Shake your phone to turn every flashlight on or off. Toggle with the text 'On' or 'Off' !";
-        public string IconID => "md-highlight";
-        public string AdditionalData { get; set; }
-        public bool AdditionalDataNeeded => true;
-        public bool Active { get; set; }
-
-
-
-        public async Task InvokeAction()
+        public LightShakeItem() : base(ShakeType.Light)
         {
-            throw new NotImplementedException();
+            Active = false;
+        }
+        public override string Title => "Flashlight";
+        public override string Description => "Shake your phone to turn every flashlight on or off. Toggle with the text 'On' or 'Off' !";
+        public override string IconID => "md-highlight";
+        public override string AdditionalData { get; set; }
+        public override bool AdditionalDataNeeded => true;
+
+        public override void InvokeAction(object sender, MulticastMessage msg)
+        {
+            if (!Active) return;
+
+            if (msg.Data == "On")
+                Flashlight.TurnOnAsync();
+            else if(msg.Data =="Off")
+                Flashlight.TurnOffAsync();
         }
     }
 }
