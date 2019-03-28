@@ -15,12 +15,14 @@ namespace Shake4Quake.ViewModels
             MessagingCenter.Subscribe<MulticastService, MulticastMessage>(this, MessageType.Vibrate.ToString(), Vibrate);
             MessagingCenter.Subscribe<MulticastService, MulticastMessage>(this, MessageType.Light.ToString(), Light);
             MessagingCenter.Subscribe<MulticastService, MulticastMessage>(this, MessageType.Text2Speech.ToString(), Text2Speech);
+            MessagingCenter.Subscribe<MulticastService, MulticastMessage>(this, MessageType.Chat.ToString(), Chat);
 
             ShakeActions = new List<IShakeAction>
             {
                 new VibrateAction(),
                 new Text2SpeechAction(),
-                new LightAction()
+                new LightAction(),
+                new ChatAction(),
             };
             Accelerometer.ShakeDetected += ShakeDetected;
 
@@ -30,18 +32,36 @@ namespace Shake4Quake.ViewModels
                 Accelerometer.Start(SensorSpeed.UI);
         }
 
-        private void Text2Speech(MulticastService arg1, MulticastMessage arg2)
+        private void Chat(MulticastService arg1, MulticastMessage arg2)
         {
-            if(!string.IsNullOrWhiteSpace(Data))
-                TextToSpeech.SpeakAsync(arg2.Data);
+
         }
 
-        private void Light(MulticastService arg1, MulticastMessage arg2)
+        private void Text2Speech(MulticastService arg1, MulticastMessage msg)
         {
-            if(arg2.Data == "On")
+            if (msg.Sender == DeviceInfo.Name)
+                return;
+
+            if(!string.IsNullOrWhiteSpace(Data))
+                TextToSpeech.SpeakAsync(msg.Data);
+        }
+
+        private void Light(MulticastService arg1, MulticastMessage msg)
+        {
+            if (msg.Sender == DeviceInfo.Name)
+                return;
+
+            if (msg.Data == "On")
                 Flashlight.TurnOnAsync();
             else
                 Flashlight.TurnOffAsync();
+        }
+        private void Vibrate(MulticastService arg1, MulticastMessage msg)
+        {
+            if (msg.Sender == DeviceInfo.Name)
+                return;
+
+            Vibration.Vibrate();
         }
 
         private void ShakeDetected(object sender, EventArgs e)
@@ -52,11 +72,6 @@ namespace Shake4Quake.ViewModels
         public string Data { get; set; }
         public IShakeAction SelectedShakeAction { get; set; }
         public List<IShakeAction> ShakeActions { get; set; }
-
-        private void Vibrate(MulticastService arg1, MulticastMessage arg2)
-        {
-            Vibration.Vibrate();
-        }
 
         ~ShakeViewModel()
         {

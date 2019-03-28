@@ -30,7 +30,7 @@ namespace Shake4Quake.Services
             remoteep = new IPEndPoint(multicastaddress, 1234);
 
             cts = new CancellationTokenSource();
-            MessagingCenter.Subscribe<IShakeAction, MulticastMessage>(this,"Send", SendJSON);
+            MessagingCenter.Subscribe<IShakeAction, MulticastMessage>(this, "Send", SendJSON);
         }
         private CancellationTokenSource cts;
         private Task listener;
@@ -56,7 +56,7 @@ namespace Shake4Quake.Services
                 IsRunning = false;
             }
         }
-        public void SendJSON(IShakeAction sender,MulticastMessage data)
+        public void SendJSON(IShakeAction sender, MulticastMessage data)
         {
             if (IsRunning)
             {
