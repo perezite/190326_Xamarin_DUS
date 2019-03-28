@@ -1,6 +1,6 @@
 ﻿namespace Shake4Quake.Models
 {
-    interface IShakeAction
+    public interface IShakeAction
     {
         string Icon {get;}
         string Name {get;}

@@ -5,8 +5,8 @@ using Xamarin.Essentials;
 
 namespace Shake4Quake.Models
 {
-    enum MessageType {Vibrate,Text2Speech,Light,Chat}
-    class MulticastMessage
+    public enum MessageType {Vibrate,Text2Speech,Light,Chat}
+    public class MulticastMessage
     {
         public MulticastMessage(MessageType Type,string Data = null,string Sender = null)
         {

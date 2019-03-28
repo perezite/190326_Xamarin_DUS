@@ -12,7 +12,7 @@ using Xamarin.Forms;
 
 namespace Shake4Quake.Services
 {
-    class MulticastService
+    public class MulticastService
     {
         public MulticastService()
         {

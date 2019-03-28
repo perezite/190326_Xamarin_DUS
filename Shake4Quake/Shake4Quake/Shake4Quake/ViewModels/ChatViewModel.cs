@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace Shake4Quake.ViewModels
 {
-    class ChatViewModel
+    public class ChatViewModel
     {
         public ChatViewModel()
         {
