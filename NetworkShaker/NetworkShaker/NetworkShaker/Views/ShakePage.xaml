@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:NetworkShaker.ViewModels"
+             xmlns:m="clr-namespace:NetworkShaker.Models"
+             xmlns:iconize="clr-namespace:Plugin.Iconize;assembly=Plugin.Iconize"
+             x:Class="NetworkShaker.Views.ShakePage">
+    <ContentPage.BindingContext>
+        <vm:ShakeViewModel />
+    </ContentPage.BindingContext>
+    
+    <StackLayout VerticalOptions="Center">
+        <CarouselView x:Name="carouselViewShakeItems"
+                      ItemsSource="{Binding ShakeItems}" 
+                      HeightRequest="350" 
+                      Margin="10">
+            <CarouselView.ItemsLayout>
+                <GridItemsLayout Orientation="Horizontal"/>
+            </CarouselView.ItemsLayout>
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="LightGray" CornerRadius="3" HasShadow="True">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <iconize:IconImage Grid.Column="0" Grid.Row="0" Icon="{Binding IconID}" IconSize="100" VerticalOptions="Start"/>
+                            <StackLayout Grid.Column="1" Grid.Row="1" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand">
+                                <Label Text="{Binding Title}" FontSize="24" HorizontalOptions="EndAndExpand"/>
+                                <Label Text="{Binding Description}" HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+                            <Entry Grid.Column="1" Grid.Row="2" Placeholder="Additional Data" Text="{Binding AdditionalData}" IsVisible="{Binding AdditionalDataNeeded}" HorizontalOptions="FillAndExpand"/>
+                            <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="4" HorizontalOptions="FillAndExpand">
+                                <Label Text="Active:" VerticalOptions="Center"/>
+                                <Switch IsToggled="{Binding Active}" HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+        <Slider Minimum="0"
+                Maximum="{Binding TotalShakeItems,Mode=OneTime}"
+                Value="{Binding SelectedShakeItemIndex, Mode=OneWayToSource}"
+                ValueChanged="Slider_ValueChanged"/> 
+    </StackLayout>
+</ContentPage>

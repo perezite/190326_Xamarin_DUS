@@ -1,5 +1,8 @@
-﻿using Plugin.Iconize;
+﻿using NetworkShaker.Models.Interfaces;
+using NetworkShaker.Views;
+using Plugin.Iconize;
 using System;
+using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,12 +15,12 @@ namespace NetworkShaker
         {
             InitializeComponent();
             Iconize.With(new Plugin.Iconize.Fonts.MaterialModule());
-            MainPage = new MainPage();
+            MainPage = new RootPage();
         }
 
         protected override void OnStart()
         {
-            // Handle when your app starts
+
         }
 
         protected override void OnSleep()

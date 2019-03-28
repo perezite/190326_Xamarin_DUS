@@ -84,6 +84,9 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.1</Version>
+    </PackageReference>
     <PackageReference Include="Xam.Plugin.Iconize">
       <Version>3.5.0.117</Version>
     </PackageReference>

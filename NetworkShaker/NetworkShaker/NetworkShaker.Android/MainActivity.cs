@@ -21,6 +21,7 @@ namespace NetworkShaker.Droid
             base.OnCreate(savedInstanceState);
             Iconize.Init(Resource.Id.toolbar, Resource.Id.sliding_tabs);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
         }

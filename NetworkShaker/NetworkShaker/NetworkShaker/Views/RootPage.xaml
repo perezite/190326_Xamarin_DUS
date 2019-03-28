@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:NetworkShaker.ViewModels"
+             xmlns:views="clr-namespace:NetworkShaker.Views"
+             x:Class="NetworkShaker.Views.RootPage">
+    <MasterDetailPage.BindingContext>
+        <vm:RootViewModel/>
+    </MasterDetailPage.BindingContext>
+    
+    <MasterDetailPage.Master>
+        <ContentPage Title="Master">
+            <ListView SeparatorVisibility="None"
+                      SelectionMode="None"
+                      HasUnevenRows="true"
+                      ItemsSource="{Binding AvailablePages}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                              <ViewCell>
+                                  <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand">
+                                      <Label VerticalOptions="FillAndExpand"
+                                         VerticalTextAlignment="Center" 
+                                         Text="{Binding Title}"
+                                         FontSize="24"/>
+                                  </StackLayout>
+                              </ViewCell>
+                          </DataTemplate>
+                      </ListView.ItemTemplate>
+            </ListView>
+        </ContentPage>
+    </MasterDetailPage.Master>
+
+    <MasterDetailPage.Detail>
+        <views:ShakePage Title="NetworkShaker 4 fun ❤"/>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>
