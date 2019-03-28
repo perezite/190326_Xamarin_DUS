@@ -5,4 +5,5 @@
              x:Class="Shake4Quake.Views.RootPage">
     <v:ShakePage Title="Shake Page"/>
     <v:LogPage Title="Log"/>
+    <v:ChatPage Title="Chat"/>
 </TabbedPage>

@@ -13,7 +13,7 @@ namespace Shake4Quake.Models
         public string Icon => "chat";
         public void InvokeAction(string data = null)
         {
-            var msg = new MulticastMessage(MessageType.Vibrate, data);
+            var msg = new MulticastMessage(MessageType.Chat, data);
             MessagingCenter.Send<IShakeAction, MulticastMessage>(this, "Send", msg);
         }
     }

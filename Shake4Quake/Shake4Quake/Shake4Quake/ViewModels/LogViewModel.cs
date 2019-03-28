@@ -13,9 +13,11 @@ namespace Shake4Quake.ViewModels
         public LogViewModel()
         {
             Log = new ObservableCollection<MulticastMessage>();
-            MessagingCenter.Subscribe<MulticastService, MulticastMessage>(this, MessageType.Vibrate.ToString(), LogMessage);
-            MessagingCenter.Subscribe<MulticastService, MulticastMessage>(this, MessageType.Light.ToString(), LogMessage);
-            MessagingCenter.Subscribe<MulticastService, MulticastMessage>(this, MessageType.Text2Speech.ToString(), LogMessage);
+
+            foreach (string MessageType in typeof(MessageType).GetEnumNames())
+            {
+                MessagingCenter.Subscribe<MulticastService, MulticastMessage>(this, MessageType, LogMessage);
+            }
         }
 
         private void LogMessage(MulticastService arg1, MulticastMessage arg2)
