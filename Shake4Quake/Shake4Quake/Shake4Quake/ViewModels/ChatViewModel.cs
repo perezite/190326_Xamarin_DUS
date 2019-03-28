@@ -14,6 +14,13 @@ namespace Shake4Quake.ViewModels
         {
             Chatlog = new ObservableCollection<MulticastMessage>();
             MessagingCenter.Subscribe<MulticastService, MulticastMessage>(this, MessageType.Chat.ToString(), LogMessage);
+            SendChatMessageCommand = new Command(SendChatMessage);
+        }
+        private readonly ChatAction action = new ChatAction();
+
+        private void SendChatMessage(object obj)
+        {
+            action.InvokeAction(ChatMessage);
         }
 
         private void LogMessage(MulticastService arg1, MulticastMessage arg2)
@@ -22,5 +29,7 @@ namespace Shake4Quake.ViewModels
         }
 
         public ObservableCollection<MulticastMessage> Chatlog { get; set; }
+        public Command SendChatMessageCommand { get; set; }
+        public string ChatMessage { get; set; }
     }
 }

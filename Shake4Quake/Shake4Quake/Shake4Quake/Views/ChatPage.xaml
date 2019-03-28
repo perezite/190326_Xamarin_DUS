@@ -7,7 +7,7 @@
         <vm:ChatViewModel />
     </ContentPage.BindingContext>
     <StackLayout Padding="20">
-        <ListView ItemsSource="{Binding Chatlog}">
+        <ListView ItemsSource="{Binding Chatlog}" SelectionMode="None">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Text="{Binding Data,StringFormat='Nachricht: {0}'}"
@@ -15,5 +15,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Entry Placeholder="Chatnachricht" Text="{Binding ChatMessage}"/>
+        <Button Text="Send" Command="{Binding SendChatMessageCommand}"/>
     </StackLayout>
 </ContentPage>
