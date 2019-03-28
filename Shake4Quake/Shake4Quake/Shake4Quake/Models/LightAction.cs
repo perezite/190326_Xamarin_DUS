@@ -11,7 +11,7 @@ namespace Shake4Quake.Models
     {
         public string Sender => DeviceInfo.Name;
         public string Name => "Light";
-        public string Icon => "highlight";
+        public string Icon => "md-highlight";
         public void InvokeAction(string data = null)
         {
             var msg = new MulticastMessage(MessageType.Light, data);

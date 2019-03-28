@@ -1,4 +1,5 @@
-﻿using Shake4Quake.Services;
+﻿using Plugin.Iconize;
+using Shake4Quake.Services;
 using Shake4Quake.Views;
 using System;
 using System.Net;
@@ -19,8 +20,7 @@ namespace Shake4Quake
         {
             InitializeComponent();
             MainPage = new RootPage();
-            Plugin.Iconize.Iconize.With(new Plugin.Iconize.Fonts.MaterialModule());
-
+            Iconize.With(new Plugin.Iconize.Fonts.MaterialModule());
             service = new MulticastService();
         }
         private readonly MulticastService service;

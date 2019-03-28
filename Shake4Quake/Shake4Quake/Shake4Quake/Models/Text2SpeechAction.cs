@@ -7,7 +7,7 @@ namespace Shake4Quake.Models
     {
         public string Sender => DeviceInfo.Name;
         public string Name => "Text2Speech";
-        public string Icon => "record_voice_over";
+        public string Icon => "md-record-voice-over";
         public void InvokeAction(string data = null)
         {
             var msg = new MulticastMessage(MessageType.Text2Speech, data);

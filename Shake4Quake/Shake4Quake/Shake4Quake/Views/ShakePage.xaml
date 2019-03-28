@@ -17,16 +17,13 @@
         </StackLayout>
         <CollectionView ItemsSource="{Binding ShakeActions}"
                         SelectionMode="Single"
-                        SelectedItem="{Binding SelectedShakeAction, Mode=OneWayToSource}" >
-            <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical" Span="1" SnapPointsAlignment="Center" SnapPointsType="Mandatory"/>
-            </CollectionView.ItemsLayout>
+                        SelectedItem="{Binding SelectedShakeAction, Mode=OneWayToSource}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame BorderColor="MediumAquamarine" CornerRadius="20">
+                    <Frame BorderColor="MediumAquamarine" CornerRadius="20" Margin="10">
                         <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                            <Label Text="{Binding Name}" FontSize="40"/>
-                            <iconize:IconImage Icon="{Binding Icon}" IconSize="30" />
+                            <Label Text="{Binding Name}" FontSize="40" HorizontalOptions="FillAndExpand"/>
+                            <iconize:IconImage Icon="{Binding Icon}" IconSize="50" IconColor="Black" IsVisible="True"/>
                         </StackLayout>
                     </Frame>
                 </DataTemplate>

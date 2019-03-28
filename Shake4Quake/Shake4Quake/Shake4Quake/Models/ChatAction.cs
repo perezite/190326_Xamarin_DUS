@@ -10,7 +10,7 @@ namespace Shake4Quake.Models
     {
         public string Sender => DeviceInfo.Name;
         public string Name => "Chat";
-        public string Icon => "chat";
+        public string Icon => "md-chat";
         public void InvokeAction(string data = null)
         {
             var msg = new MulticastMessage(MessageType.Chat, data);

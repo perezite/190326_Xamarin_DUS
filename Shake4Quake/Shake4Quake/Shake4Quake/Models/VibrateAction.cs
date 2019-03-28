@@ -7,7 +7,7 @@ namespace Shake4Quake.Models
     {
         public string Sender => DeviceInfo.Name;
         public string Name => "Vibrate";
-        public string Icon => "vibration";
+        public string Icon => "md-vibration";
         public void InvokeAction(string data = null)
         {
             var msg = new MulticastMessage(MessageType.Vibrate, data);
