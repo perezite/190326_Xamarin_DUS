@@ -42,8 +42,7 @@ namespace Shake4Quake.ViewModels
             if (msg.Sender == DeviceInfo.Name)
                 return;
 
-            if(!string.IsNullOrWhiteSpace(Data))
-                TextToSpeech.SpeakAsync(msg.Data);
+            TextToSpeech.SpeakAsync(msg.Data);
         }
 
         private void Light(MulticastService arg1, MulticastMessage msg)
@@ -65,8 +64,8 @@ namespace Shake4Quake.ViewModels
         }
 
         private void ShakeDetected(object sender, EventArgs e)
-        { 
-            SelectedShakeAction?.InvokeAction(Data);
+        {
+            SelectedShakeAction?.InvokeAction(string.IsNullOrWhiteSpace(Data) ? "nodata" : Data);
         }
 
         public string Data { get; set; }
