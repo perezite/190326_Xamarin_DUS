@@ -10,8 +10,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="Xam.Plugin.Iconize" Version="3.5.0.117" />
+    <PackageReference Include="Xam.Plugin.Iconize.Material" Version="3.5.0.117" />
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
-    <PackageReference Include="Xamarin.Forms" Version="3.6.0.264807" />
+    <PackageReference Include="Xamarin.Forms" Version="4.0.0.250467-pre7" />
   </ItemGroup>
 
   <ItemGroup>

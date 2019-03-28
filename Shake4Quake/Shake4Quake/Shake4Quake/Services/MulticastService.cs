@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Shake4Quake.Models;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
@@ -6,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace Shake4Quake.Services
 {
@@ -26,8 +29,8 @@ namespace Shake4Quake.Services
             client.JoinMulticastGroup(multicastaddress);
             remoteep = new IPEndPoint(multicastaddress, 1234);
 
-
             cts = new CancellationTokenSource();
+            MessagingCenter.Subscribe<IShakeAction, MulticastMessage>(this,"Send", SendJSON);
         }
         private CancellationTokenSource cts;
         private Task listener;
@@ -53,12 +56,13 @@ namespace Shake4Quake.Services
                 IsRunning = false;
             }
         }
-        public void SendMessage(string message)
+        public void SendJSON(IShakeAction sender,MulticastMessage data)
         {
             if (IsRunning)
             {
-                var data = Encoding.Default.GetBytes(message);
-                client.Send(data, data.Length, remoteep);
+                var json = JsonConvert.SerializeObject(data);
+                var bytes = Encoding.Default.GetBytes(json);
+                client.Send(bytes, bytes.Length, remoteep);
             }
         }
         private void Listen()
@@ -69,11 +73,10 @@ namespace Shake4Quake.Services
                     break;
 
                 byte[] data = client.Receive(ref localEp);
-                string message = Encoding.Default.GetString(data, 0, data.Length);
-                if (message == "vibrate")
-                    Vibration.Vibrate(1000);
+                string json = Encoding.Default.GetString(data, 0, data.Length);
+                MulticastMessage msg = JsonConvert.DeserializeObject<MulticastMessage>(json);
+                MessagingCenter.Send(this, msg.Type.ToString(), msg);
             }
-
         }
     }
 }

@@ -2,15 +2,33 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:Shake4Quake.ViewModels"
+             xmlns:iconize="clr-namespace:Plugin.Iconize;assembly=Plugin.Iconize"
              x:Class="Shake4Quake.Views.ShakePage">
     <ContentPage.BindingContext>
         <vm:ShakeViewModel/>
     </ContentPage.BindingContext>
-    
-        <StackLayout>
-            <Label Text="pls Shake for fun :)"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    
+
+    <StackLayout Padding="20" Spacing="20">
+        <Label Text="Select your Action:" FontSize="30" FontAttributes="Bold"/>
+        <CollectionView ItemsSource="{Binding ShakeActions}"
+                        SelectionMode="Single"
+                        SelectedItem="{Binding SelectedShakeAction, Mode=OneWayToSource}" >
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="1" SnapPointsAlignment="Center" SnapPointsType="Mandatory"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+
+                    <Frame BorderColor="MediumAquamarine" CornerRadius="20">
+                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                            <Label Text="{Binding Name}" FontSize="40"/>
+                            <iconize:IconImage Icon="{Binding Icon}" IconSize="30" />
+                        </StackLayout>
+                    </Frame>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+
 </ContentPage>

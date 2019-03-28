@@ -1,4 +1,5 @@
-﻿using Shake4Quake.Views;
+﻿using Shake4Quake.Services;
+using Shake4Quake.Views;
 using System;
 using System.Net;
 using System.Net.Sockets;
@@ -18,19 +19,23 @@ namespace Shake4Quake
         {
             InitializeComponent();
             MainPage = new ShakePage();
+            Plugin.Iconize.Iconize.With(new Plugin.Iconize.Fonts.MaterialModule());
+
+            service = new MulticastService();
         }
+        private readonly MulticastService service;
 
         protected override void OnStart()
         {
-        }
-        public void SendMessage(string message)
-        {
+            service.StartService();
         }
         protected override void OnSleep()
         {
+            service.StoppService();
         }
         protected override void OnResume()
         {
+            service.StartService();
         }
     }
 }
