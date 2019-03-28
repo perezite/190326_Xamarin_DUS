@@ -15,7 +15,6 @@ namespace Shake4Quake.ViewModels
             MessagingCenter.Subscribe<MulticastService, MulticastMessage>(this, MessageType.Vibrate.ToString(), Vibrate);
             MessagingCenter.Subscribe<MulticastService, MulticastMessage>(this, MessageType.Light.ToString(), Light);
             MessagingCenter.Subscribe<MulticastService, MulticastMessage>(this, MessageType.Text2Speech.ToString(), Text2Speech);
-            MessagingCenter.Subscribe<MulticastService, MulticastMessage>(this, MessageType.Chat.ToString(), Chat);
 
             ShakeActions = new List<IShakeAction>
             {
@@ -32,14 +31,9 @@ namespace Shake4Quake.ViewModels
                 Accelerometer.Start(SensorSpeed.UI);
         }
 
-        private void Chat(MulticastService arg1, MulticastMessage arg2)
-        {
-
-        }
-
         private void Text2Speech(MulticastService arg1, MulticastMessage msg)
         {
-            if (msg.Sender == DeviceInfo.Name)
+            if (!Selbsttest)
                 return;
 
             TextToSpeech.SpeakAsync(msg.Data);
@@ -47,7 +41,7 @@ namespace Shake4Quake.ViewModels
 
         private void Light(MulticastService arg1, MulticastMessage msg)
         {
-            if (msg.Sender == DeviceInfo.Name)
+            if (!Selbsttest)
                 return;
 
             if (msg.Data == "On")
@@ -57,7 +51,7 @@ namespace Shake4Quake.ViewModels
         }
         private void Vibrate(MulticastService arg1, MulticastMessage msg)
         {
-            if (msg.Sender == DeviceInfo.Name)
+            if (!Selbsttest)
                 return;
 
             Vibration.Vibrate();
@@ -68,6 +62,7 @@ namespace Shake4Quake.ViewModels
             SelectedShakeAction?.InvokeAction(string.IsNullOrWhiteSpace(Data) ? "nodata" : Data);
         }
 
+        public bool Selbsttest { get; set; }
         public string Data { get; set; }
         public IShakeAction SelectedShakeAction { get; set; }
         public List<IShakeAction> ShakeActions { get; set; }
