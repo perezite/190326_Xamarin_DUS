@@ -1,4 +1,11 @@
-﻿using System;
+﻿using Shake4Quake.Views;
+using System;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,23 +17,20 @@ namespace Shake4Quake
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
+            MainPage = new ShakePage();
         }
 
         protected override void OnStart()
         {
-            // Handle when your app starts
         }
-
+        public void SendMessage(string message)
+        {
+        }
         protected override void OnSleep()
         {
-            // Handle when your app sleeps
         }
-
         protected override void OnResume()
         {
-            // Handle when your app resumes
         }
     }
 }

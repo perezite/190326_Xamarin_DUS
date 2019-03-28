@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Shake4Quake.ViewModels"
+             x:Class="Shake4Quake.Views.ShakePage">
+    <ContentPage.BindingContext>
+        <vm:ShakeViewModel/>
+    </ContentPage.BindingContext>
+    
+        <StackLayout>
+            <Label Text="pls Shake for fun :)"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+    
+</ContentPage>
