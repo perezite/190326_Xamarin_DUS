@@ -59,7 +59,7 @@ namespace Shake4Quake.ViewModels
 
         private void ShakeDetected(object sender, EventArgs e)
         {
-            SelectedShakeAction?.InvokeAction(string.IsNullOrWhiteSpace(Data) ? "nodata" : Data);
+            SelectedShakeAction?.InvokeAction(string.IsNullOrWhiteSpace(Data) ? SelectedShakeAction.Name : Data);
         }
 
         public bool Selbsttest { get; set; }
