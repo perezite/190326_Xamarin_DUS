@@ -5,5 +5,6 @@
              x:Class="DSUL.RootTabbedPage">
 
     <local:AppProperties Title="Properties" />
+    <local:TextPage Title="Textdatei"/>
     
 </TabbedPage>
