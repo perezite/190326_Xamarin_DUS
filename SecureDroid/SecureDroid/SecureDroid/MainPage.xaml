@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SecureDroid"
+             x:Class="SecureDroid.MainPage">
+
+    <StackLayout VerticalOptions="Center">
+        <Entry x:Name="entryUser" Placeholder="User"/>
+        <Entry x:Name="entryPasswort" Placeholder="Passwort" IsPassword="True"/>
+        <Button x:Name="buttonLogin" Text="Login" Clicked="ButtonLogin_Clicked"/>
+    </StackLayout>
+
+</ContentPage>
