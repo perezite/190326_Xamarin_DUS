@@ -6,5 +6,6 @@
 
     <local:AppProperties Title="Properties" />
     <local:TextPage Title="Textdatei"/>
-    
+    <local:SQLitePage Title="SQLite"/>
+
 </TabbedPage>
