@@ -5,8 +5,18 @@
              x:Class="UserControl.MainPage">
 
     <StackLayout VerticalOptions="Center">
+        <Entry Placeholder="Mein Text"/>
+        <local:LabledEntry Label="Vorname:"  />
+        <local:LabledEntry Label="Nachname:" />
+        <local:LabledEntry Label="Alter:" Text="{Binding Source={x:Reference sliderWert},Path=Value,Mode=TwoWay}" />
+        <local:LabledEntry Label="Kontostand:" />
+
+        <Slider x:Name="sliderWert" Minimum="0" Maximum="100" Value="20"/>
+
+        <BoxView BackgroundColor="Orange" HeightRequest="3"/>
         
         
+
     </StackLayout>
 
 </ContentPage>

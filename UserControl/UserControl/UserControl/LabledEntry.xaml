@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UserControl.LabledEntry">
+
+    <StackLayout Orientation="Horizontal">
+        <Label x:Name="label" Text="Vorname:" VerticalOptions="CenterAndExpand" />
+        <Entry x:Name="entry" Placeholder="Dein Vorname ..." Text="{Binding Text,Mode=TwoWay}" HorizontalOptions="FillAndExpand"/>
+    </StackLayout>
+    
+</ContentView>
