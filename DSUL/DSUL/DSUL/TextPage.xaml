@@ -8,7 +8,10 @@
         <Entry x:Name="entryEingabe" Placeholder="Text zum speichern ..."/>
         <Button x:Name="buttonDS" Text="Speichern mit DS" Clicked="ButtonDS_Clicked"/>
         <Button x:Name="buttonDL" Text="Laden mit DS" Clicked="ButtonDL_Clicked"/>
-        
+        <BoxView BackgroundColor="Black" HeightRequest="5"/>
+        <Button x:Name="buttonEssentialsSpeichern" Text="Speichern mit Essentials" Clicked="ButtonEssentialsSpeichern_Clicked"/>
+        <Button x:Name="buttonEssentialsLaden" Text="Laden mit Essentials" Clicked="ButtonEssentialsLaden_Clicked"/>
+
     </StackLayout>
 
 </ContentPage>
