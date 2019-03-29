@@ -1,4 +1,5 @@
 ﻿using NetworkShaker.Models.Interfaces;
+using NetworkShaker.Services;
 using NetworkShaker.Views;
 using Plugin.Iconize;
 using System;
@@ -19,9 +20,12 @@ namespace NetworkShaker
             MainPage = new RootPage();
         }
 
+        private MulticastService service;
+
         protected override void OnStart()
         {
-
+            service = new MulticastService();
+            service.StartService();
         }
 
         protected override void OnSleep()
