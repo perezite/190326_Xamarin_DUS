@@ -11,7 +11,7 @@ namespace UserControl
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new RootTabPage();
         }
 
         protected override void OnStart()
