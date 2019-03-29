@@ -60,7 +60,7 @@ namespace NetworkShaker.Services
                     byte[] data = client.Receive(ref localEndpoint);
                     string json = Encoding.Default.GetString(data, 0, data.Length);
                     MulticastMessage msg = JsonConvert.DeserializeObject<MulticastMessage>(json);
-                    MessagingCenter.Send(this, msg.Type.ToString(), msg);
+                    MessagingCenter.Send((object)this, msg.Type.ToString(), msg);
                 }
             });
         }
